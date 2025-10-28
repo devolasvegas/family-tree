@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { query } from "./lib/ApolloClient";
+import { query } from "./lib/apolloClient";
 import { gql } from "@apollo/client";
 
 export default async function Home() {
