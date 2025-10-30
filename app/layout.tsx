@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
+import NavBar from "./components/NavBar";
+
 import { ApolloWrapper } from "./providers/ApolloWrapper";
 import { SessionWrapper } from "./providers/SessionWrapper";
 
@@ -32,6 +34,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <SessionWrapper>
+          <NavBar />
           <ApolloWrapper>{children}</ApolloWrapper>
         </SessionWrapper>
       </body>
