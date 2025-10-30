@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
-import { ApolloWrapper } from "./providers/ApolloWrapper";
-import { SessionWrapper } from "./providers/SessionWrapper";
+import { ApolloWrapper } from "../providers/ApolloWrapper";
+import { SessionWrapper } from "../providers/SessionWrapper";
 
 import "./globals.css";
 
