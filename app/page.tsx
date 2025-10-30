@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { gql } from "@apollo/client";
 
-import { query } from "./lib/apolloClient";
+import { query } from "../lib/apolloClient";
 
 export default async function Home() {
   const GET_LOCATIONS = gql`
