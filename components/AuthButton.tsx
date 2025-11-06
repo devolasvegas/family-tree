@@ -22,13 +22,25 @@ const AuthButton = () => {
             className="rounded-full"
           />
         </div>
-        <Button onClick={() => signOut()}>Sign Out</Button>
+        <Button
+          variant={"secondary"}
+          className="bg-inchworm"
+          onClick={() => signOut()}
+        >
+          Sign Out
+        </Button>
       </div>
     );
   }
   return (
     <>
-      <Button onClick={() => signIn()}>Sign In</Button>
+      <Button
+        variant={"secondary"}
+        className="bg-inchworm"
+        onClick={() => signIn()}
+      >
+        Sign In
+      </Button>
     </>
   );
 };
