@@ -5,6 +5,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { NavBar } from "@/components/NavBar";
 import Logo from "@/components/Logo";
 import Footer from "@/components/Footer";
+import AuthButton from "@/components/AuthButton";
 
 import { ApolloWrapper } from "@/providers/ApolloWrapper";
 import { SessionWrapper } from "@/providers/SessionWrapper";
@@ -43,6 +44,7 @@ export default function RootLayout({
                 <Logo />
               </Link>
               <NavBar />
+              <AuthButton />
             </div>
           </div>
           <ApolloWrapper>{children}</ApolloWrapper>
