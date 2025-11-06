@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { NavBar } from "@/components/NavBar";
+import Logo from "@/components/Logo";
 import Footer from "@/components/Footer";
 
 import { ApolloWrapper } from "@/providers/ApolloWrapper";
@@ -36,7 +38,12 @@ export default function RootLayout({
       >
         <SessionWrapper>
           <div className="mx-auto w-full max-w-5xl px-4">
-            <NavBar />
+            <div className="flex flex-row justify-between items-center">
+              <Link href="/">
+                <Logo />
+              </Link>
+              <NavBar />
+            </div>
           </div>
           <ApolloWrapper>{children}</ApolloWrapper>
           <Footer />
