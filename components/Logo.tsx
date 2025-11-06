@@ -1,4 +1,4 @@
-import { TreeDeciduous, TreeDeciduousIcon } from "lucide-react";
+import { TreeDeciduousIcon } from "lucide-react";
 
 const Logo = () => {
   return (
