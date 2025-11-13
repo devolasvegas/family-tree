@@ -2,7 +2,6 @@ import Image from "next/image";
 import { gql } from "@apollo/client";
 
 import { query } from "@/lib/apolloClient";
-import { Http2ServerRequest } from "http2";
 
 export default async function Home() {
   const GET_PERSONS = gql`
@@ -15,13 +14,8 @@ export default async function Home() {
     }
   `;
 
-  let persons;
-
-  if (!process.env.NEXT_BUILD) {
-    const { data }: { data: any } = await query({ query: GET_PERSONS });
-    console.log(data);
-    persons = data.persons;
-  }
+  const { data } = await query({ query: GET_PERSONS });
+  console.log(data);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
@@ -34,22 +28,6 @@ export default async function Home() {
           height={20}
           priority
         />
-        {persons && persons.length > 0 ? (
-          <div className="mb-8">
-            <h2 className="text-2xl font-semibold mb-4 text-black dark:text-zinc-50">
-              Persons:
-            </h2>
-            <ul className="list-disc list-inside text-zinc-700 dark:text-zinc-300">
-              {persons.map((person: any) => (
-                <li key={person.id}>
-                  {person.firstName} {person.lastName}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : (
-          <h2>Nope</h2>
-        )}
         <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
           <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
             To get started, edit the page.tsx file.
