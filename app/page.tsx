@@ -4,17 +4,16 @@ import { gql } from "@apollo/client";
 import { query } from "@/lib/apolloClient";
 
 export default async function Home() {
-  const GET_LOCATIONS = gql`
-    query GetLocations {
-      locations {
+  const GET_PERSONS = gql`
+    query GetPersons {
+      persons {
         id
-        name
-        description
-        photo
+        firstName
+        lastName
       }
     }
   `;
-  const { data } = await query({ query: GET_LOCATIONS });
+  const { data } = await query({ query: GET_PERSONS });
 
   console.log(data);
   return (
