@@ -17,7 +17,7 @@ export default async function Home() {
   let persons;
 
   if (!process.env.NEXT_BUILD) {
-    const { data } = await query({ query: GET_PERSONS });
+    const { data }: { data: any } = await query({ query: GET_PERSONS });
     console.log(data);
     persons = data.persons;
   }
