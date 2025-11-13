@@ -8,11 +8,12 @@ import {
   InMemoryCache,
 } from "@apollo/client-integration-nextjs";
 
+// Obviously, this wrapper is intended for use on the client side only.
 // have a function to create a client for you
 function makeClient() {
   const httpLink = new HttpLink({
     // this needs to be an absolute url, as relative urls cannot be used in SSR
-    uri: "https://flyby-router-demo.herokuapp.com/",
+    uri: `https://${process.env.APOLLO_SERVER_PUBLIC_DOMAIN}/`,
     // you can disable result caching here if you want to
     // (this does not work if you are rendering your page with `export const dynamic = "force-static"`)
     fetchOptions: {
