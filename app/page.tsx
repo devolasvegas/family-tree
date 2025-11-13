@@ -3,6 +3,18 @@ import { gql } from "@apollo/client";
 
 import { query } from "@/lib/apolloClient";
 
+export const dynamic = "force-dynamic";
+
+interface Person {
+  id: string;
+  firstName: string;
+  lastName: string;
+}
+
+interface Data {
+  persons: Person[];
+}
+
 export default async function Home() {
   const GET_PERSONS = gql`
     query GetPersons {
@@ -14,8 +26,10 @@ export default async function Home() {
     }
   `;
 
-  const { data } = await query({ query: GET_PERSONS });
-  console.log(data);
+  const { data }: { data: Data | undefined } = await query({
+    query: GET_PERSONS,
+  });
+  const persons = data?.persons || [];
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
@@ -28,6 +42,27 @@ export default async function Home() {
           height={20}
           priority
         />
+        {persons.length > 0 ? (
+          <div className="mt-10 w-full">
+            <h2 className="mb-4 text-2xl font-semibold text-black dark:text-zinc-50">
+              Persons:
+            </h2>
+            <ul className="list-disc pl-5">
+              {persons.map((person: Person) => (
+                <li
+                  key={person.id}
+                  className="mb-2 text-lg text-zinc-700 dark:text-zinc-300"
+                >
+                  {person.firstName} {person.lastName}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <p className="mt-10 text-lg text-zinc-700 dark:text-zinc-300">
+            No persons found.
+          </p>
+        )}
         <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
           <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
             To get started, edit the page.tsx file.
